@@ -95,8 +95,11 @@ def rewindRing(ring, clockwise):
     j = length - 1
 
     while i < length:
+        r = (np.array(ring[i][0]) - np.array(ring[j][0])) * (np.array(ring[j][1]) + np.array(ring[i][1]))
+        print(f"r: {r}")
         area, error = kahan_add(
-            area, ((np.array(ring[i][0]) - np.array(ring[j][0])) * (np.array(ring[j][1]) + np.array(ring[i][1]))).tolist(), error
+            #area, (np.array(ring[i][0]) - np.array(ring[j][0])) * (np.array(ring[j][1]) + np.array(ring[i][1])), error
+            area, r, error
         )
         j = i
         i += 1

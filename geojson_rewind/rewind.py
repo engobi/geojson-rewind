@@ -71,7 +71,6 @@ def rewindRings(rings, rfc7946):
 
 
 def kahan_add(a, b, err):
-    print(f"a : {a}\nb : {b}")
     if abs(a) >= abs(b):
         err += a - (a + b) + b
     else:
@@ -97,7 +96,7 @@ def rewindRing(ring, clockwise):
 
     while i < length:
         area, error = kahan_add(
-            area, (np.array(ring[i][0]) - np.array(ring[j][0])) * (np.array(ring[j][1]) + np.array(ring[i][1])), error
+            area, ((np.array(ring[i][0]) - np.array(ring[j][0])) * (np.array(ring[j][1]) + np.array(ring[i][1]))).tolist(), error
         )
         j = i
         i += 1

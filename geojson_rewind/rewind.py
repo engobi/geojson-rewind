@@ -3,7 +3,7 @@ import copy
 import json
 import logging
 import sys
-
+import numpy as np
 
 def rewind(geojson, rfc7946=True):
     gj = copy.deepcopy(geojson)
@@ -96,7 +96,7 @@ def rewindRing(ring, clockwise):
 
     while i < length:
         area, error = kahan_add(
-            area, (ring[i][0] - ring[j][0]) * (ring[j][1] + ring[i][1]), error
+            area, (np.array(ring[i][0]) - np.array(ring[j][0])) * (np.array(ring[j][1]) + np.array(ring[i][1])), error
         )
         j = i
         i += 1

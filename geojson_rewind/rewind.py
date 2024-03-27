@@ -71,6 +71,7 @@ def rewindRings(rings, rfc7946):
 
 
 def kahan_add(a, b, err):
+    print(f"a : {a}\nb : {b}")
     if abs(a) >= abs(b):
         err += a - (a + b) + b
     else:
